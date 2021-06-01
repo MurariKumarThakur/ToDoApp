@@ -77,9 +77,9 @@ export default function TransitionsModal({open,set,todo}) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Update Task</h2>
              <div >
-            <TextField style={{width:'100%'}}  value={input} onChange={event=> setInput(event.target.value)} autoComplete="off" id="outlined-basic" label="Update Task" variant="outlined" />  
+            <TextField style={{width:'100%'}}  value={input} onChange={event=> setInput(event.target.value)} autoComplete="off" id="outlined-basic" label="Please Update Task" variant="outlined" />  
              <br /> <br/>
-            <div style={{display:'flex', justifyContent:'space-between'}}>
+            <div style={{display:'flex', justifyContent:'space-evenly'}}>
             <Button  disabled={!input}  variant="contained" color="primary" onClick={updateTodo}>Update TAsk  </Button> 
              {" "}
             <Button  variant="contained" onClick={closetheWindow}>Close Me</Button>

@@ -4,18 +4,19 @@ import { Button,Checkbox } from '@material-ui/core';
 import "./App.css"
 import db from './firebase';
 import TransitionsModal from './Modal'
+import ConfirmationMdoel from './ConfirmationModel'
 function Todoitems(props) {
  
   const [input,setInput]=useState('');
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked,setIsChecked] =useState(false);
   const [backColor,setBackColor] =useState('');
-  
+  const [isDeleted,SetIsDeleted]=useState(false)
  const delteRecord =(event)=>{
   
-
+  SetIsDeleted(true);
    
-   db.collection('todos').doc(props.todo.id).delete();
+  
 
  }
  const updateTask=(event)=>{ 
@@ -68,7 +69,7 @@ function Todoitems(props) {
         
       
         </Paper>
-       
+        <ConfirmationMdoel Delete={isDeleted} setDel={SetIsDeleted}   todo={props.todo}/>
         <TransitionsModal  open={isOpen} set={setIsOpen}  todo={props.todo} />
          
 

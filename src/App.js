@@ -16,11 +16,11 @@ function App() {
  // as they get added removed
 
  useEffect(()=>{
-   db.collection('todos').orderBy('timestamp','desc').onSnapshot(snapshot=>{
+   db.collection('todos').orderBy('timestamp','desc').onSnapshot(snap=>{
 
     
     // console.log(snapshot.docs.map(doc=>doc.data().todo));
-      setTodos(snapshot.docs.map(doc=>({id:doc.id,todo:doc.data().todo})))
+      setTodos(snap.docs.map(doc=>({id:doc.id,todo:doc.data().todo})))
 
    })
    
@@ -59,7 +59,7 @@ function App() {
      <form  style={{margin:"20px"}}>
      {/* <input onChange={onInputChange} value={input} type="text"   /> */}
 
-     <TextField  style={{width:'40%'}} autoComplete="off" id="outlined-basic" label="Please Enter Task" variant="outlined"  onChange={onInputChange} value={input} type="text"      />
+     <TextField  style={{width:'40%'}} autoComplete="off" id="outlined-basic" label="Please Create New Task ..." variant="outlined"  onChange={onInputChange} value={input} type="text"      />
      {/* <button type='submit' onClick={addToDo} disabled={dis} >Create to do disabled </button> */}
 
      <Button style={{  margin: "10px"}} variant="contained"  type='submit' onClick={addToDo} disabled={!input} color="primary" >Create Task</Button>
@@ -80,7 +80,7 @@ function App() {
 
         
     
-      )) : <Alert severity="error">congratulations ! you don't have any Task  </Alert> }
+      )) : <Alert severity="error">Currently you don't have any task </Alert> }
      
      </ol>
      
