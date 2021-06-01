@@ -11,9 +11,11 @@ const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
+   
     justifyContent: 'center',
   },
   paper: {
+    width:'40%',
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -74,13 +76,14 @@ export default function TransitionsModal({open,set,todo}) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Update Task</h2>
-            <TextField  value={input} onChange={event=> setInput(event.target.value)} autoComplete="off" id="outlined-basic" label="Outlined" variant="outlined" />  
+             <div >
+            <TextField style={{width:'100%'}}  value={input} onChange={event=> setInput(event.target.value)} autoComplete="off" id="outlined-basic" label="Update Task" variant="outlined" />  
              <br /> <br/>
-            <div>
-            <Button disabled={!input}  variant="contained" color="primary" onClick={updateTodo}>Update TAsk  </Button> 
+            <div style={{display:'flex', justifyContent:'space-between'}}>
+            <Button  disabled={!input}  variant="contained" color="primary" onClick={updateTodo}>Update TAsk  </Button> 
              {" "}
-            <Button variant="contained" onClick={closetheWindow}>Close Me</Button>
-
+            <Button  variant="contained" onClick={closetheWindow}>Close Me</Button>
+            </div>
             </div>
            
 

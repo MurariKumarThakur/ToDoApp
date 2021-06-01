@@ -59,7 +59,7 @@ function App() {
      <form  style={{margin:"20px"}}>
      {/* <input onChange={onInputChange} value={input} type="text"   /> */}
 
-     <TextField autoComplete="off" id="outlined-basic" label="Please Enter Task" variant="outlined"  onChange={onInputChange} value={input} type="text"      />
+     <TextField  style={{width:'40%'}} autoComplete="off" id="outlined-basic" label="Please Enter Task" variant="outlined"  onChange={onInputChange} value={input} type="text"      />
      {/* <button type='submit' onClick={addToDo} disabled={dis} >Create to do disabled </button> */}
 
      <Button style={{  margin: "10px"}} variant="contained"  type='submit' onClick={addToDo} disabled={!input} color="primary" >Create Task</Button>
