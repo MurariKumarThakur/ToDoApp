@@ -1,0 +1,9 @@
+.alert {
+  height: 30px;
+  width: 100%;
+  background: orange;
+  border:1px solid;
+  margin-bottom:5px;
+  padding:1px;
+  border-radius: 2px;
+}

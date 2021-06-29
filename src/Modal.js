@@ -1,11 +1,12 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Button,TextField  } from '@material-ui/core';
-import db from './firebase';
-import { SettingsPowerRounded } from '@material-ui/icons';
+import {db} from './firebase';
+import { SettingsInputAntenna } from '@material-ui/icons';
+
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -23,29 +24,65 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({open,set,todo}) {
+export default function TransitionsModal({openwin,models,user,todo,mytodos}) {
 
- const [input, setInput] = useState(todo.todo);
+
+ const [mytext,SetMyText]=useState(todo)
+
+
+   useEffect(() => {
+    SetMyText(todo)
+   }, [todo])
+      
  
-
-  const updateTodo =(event)=>{
-   //update the todo with
-   
-   db.collection('todos').doc(todo.id).set({
+ 
     
-    todo:input
+ 
+ const updateToDo=()=>{
+  
+   let record =[]
+   let updateResult=[]
+   const initialText = todo;
+   const currentText =mytext;
+   const docRef= db.collection('todos').doc(user?.uid);
 
-   },{merge:true})
+   mytodos.map(rec=>{
+      if(initialText==rec){
 
+        if(updateResult.length<1){
+          updateResult.push(currentText);
+        }else{
+          record.push(rec)
+        }
 
-
-   set(false);
-
-  }
-
+       
+       }else{
+        record.push(rec)
+       }
+   })
+   
+   docRef.update({
+     todos:record.concat(updateResult)
+   }).then(()=>{
+    models(false);
+     
+    
+    
+   }).catch((err)=>{
+      console.log(err.message);
+   })
+  
+ }
+  
   const closetheWindow=()=>{
-   set(false);
-   setInput(todo.todo)
+    models(false);
+    
+    
+    
+  }
+  const updatingInputField=(event)=>{
+   
+    SetMyText(event.target.value)
     
   }
 
@@ -55,7 +92,7 @@ export default function TransitionsModal({open,set,todo}) {
 
 
 
-  if(!open) return null
+  if(!openwin) return null
  
 
   return (
@@ -65,7 +102,7 @@ export default function TransitionsModal({open,set,todo}) {
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={open}
+        open={openwin}
         // onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -73,14 +110,14 @@ export default function TransitionsModal({open,set,todo}) {
           timeout: 500,
         }}
       >
-        <Fade in={open}>
+        <Fade in={openwin}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Update Task</h2>
              <div >
-            <TextField style={{width:'100%'}}  value={input} onChange={event=> setInput(event.target.value)} autoComplete="off" id="outlined-basic" label="Please Update Task" variant="outlined" />  
+            <TextField style={{width:'100%'}}  value={mytext} onChange={updatingInputField} autoComplete="off" id="outlined-basic" label="Please Update Task" variant="outlined" />  
              <br /> <br/>
             <div style={{display:'flex', justifyContent:'space-evenly'}}>
-            <Button  disabled={!input}  variant="contained" color="primary" onClick={updateTodo}>Update TAsk  </Button> 
+            <Button  disabled={!mytext}  variant="contained" color="primary" onClick={updateToDo}>Update TAsk  </Button> 
              {" "}
             <Button  variant="contained" onClick={closetheWindow}>Close Me</Button>
             </div>

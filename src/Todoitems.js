@@ -1,38 +1,43 @@
 import React,{useState} from 'react'
-import Paper from '@material-ui/core/Paper';
-import { Button,Checkbox } from '@material-ui/core';
-import "./App.css"
-import db from './firebase';
+
+import { Button ,Checkbox} from '@material-ui/core';
+
+
 import TransitionsModal from './Modal'
 import ConfirmationMdoel from './ConfirmationModel'
+
 function Todoitems(props) {
- 
-  const [input,setInput]=useState('');
+  console.log('props is-->',props);
   const [isOpen, setIsOpen] = useState(false)
   const [isChecked,setIsChecked] =useState(false);
   const [backColor,setBackColor] =useState('');
   const [isDeleted,SetIsDeleted]=useState(false)
- const delteRecord =(event)=>{
-  
-  SetIsDeleted(true);
    
+
+ const delteRecord =()=>{
+
+  SetIsDeleted(true);
+  
   
 
  }
- const updateTask=(event)=>{ 
+ const updateTask=()=>{ 
 
   setIsOpen(true);
+
+
  }
 
  
 
- const handleChange=(event)=>{ 
+ const checking=(event)=>{ 
+   
    if(isChecked){
      setIsChecked(false)
      setBackColor("")
    }else{
      setIsChecked(true)
-     setBackColor("#09f109")
+     setBackColor("rgb(15 208 181)")
 
    }
    
@@ -40,53 +45,37 @@ function Todoitems(props) {
 
     return (
      
-    
-      <div>
+     <>
       
-        
-        <Paper style={{margin:'15px',textAlign:'left', background:backColor }} elevation={3}     >
-        {/* <DeleteForeverIcon onClick={delteRecord} /> */}
+        <div className="listContainer" style={{background:backColor}}>
 
-        
         <Checkbox
-            checked={isChecked}
-           
-            onChange={handleChange}
-            name="checkedB"
-            color="primary"
-           
-          />
+        checked={isChecked}
+        onClick={checking}/>
+       
+     
+     
         <Button onClick={updateTask} variant="contained"
 
-          color="primary">Edit Task </Button> {" "}
-         <Button onClick={delteRecord} variant="contained"
+          color="primary">Edit Task </Button> 
+
+
+         <Button style={{marginLeft:'5px'}} onClick={delteRecord} variant="contained"
           color="secondary"> Delete Task </Button>
-          <span style={{fontSize:'20px'}} >   {props.todo.todo} </span>
-         
-         
-        
+
+
+          <span title={props.todo} style={{fontSize:'20px',margin:'10px'}}
+          >       {props.todo} </span>
+
+        </div>
        
-        
-      
-        </Paper>
-        <ConfirmationMdoel Delete={isDeleted} setDel={SetIsDeleted}   todo={props.todo}/>
-        <TransitionsModal  open={isOpen} set={setIsOpen}  todo={props.todo} />
          
-
-          </div>
-
-
-
-
-
-
-
-
-
-
       
-      
-      
+       
+
+        <ConfirmationMdoel open={isDeleted} setDel={SetIsDeleted} user={props.user}  todo={props.todo} mytodos={props.mytodos}/>
+        <TransitionsModal  openwin={isOpen} models={setIsOpen} user={props.user}  todo={props.todo} mytodos={props.mytodos}  />
+        </>
     )
 }
 

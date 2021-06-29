@@ -1,0 +1,13 @@
+.record {
+  display: flex;
+  justify-content: center;
+}
+.recordList {
+  margin: 20px;
+  box-shadow: orchid palegoldenrod transparent;
+  border: 1px solid rgb(71, 166, 255);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 5px rgb(71, 166, 255);
+
+}

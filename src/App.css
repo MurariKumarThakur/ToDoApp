@@ -1,8 +1,11 @@
-.App {
-  text-align: center;
-  
-}
-.record{
+
+.record {
   height: 70vh;
   overflow: auto;
+}
+.App{
+  
+}
+button{
+  cursor: pointer;
 }
