@@ -5,7 +5,7 @@ import { Button ,Checkbox} from '@material-ui/core';
 
 import TransitionsModal from './Modal'
 import ConfirmationMdoel from './ConfirmationModel'
-
+import './Todoitems.css'
 function Todoitems(props) {
   console.log('props is-->',props);
   const [isOpen, setIsOpen] = useState(false)
@@ -49,10 +49,10 @@ function Todoitems(props) {
       
         <div className="listContainer" style={{background:backColor}}>
 
-        <Checkbox
+        <Checkbox className='checkbox'
         checked={isChecked}
-        onClick={checking}/>
-       
+        onClick={checking}   style={{zIndex: '0 !important'}}/>
+      
      
      
         <Button onClick={updateTask} variant="contained"
