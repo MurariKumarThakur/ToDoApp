@@ -1,13 +1,29 @@
 .record {
   display: flex;
   justify-content: center;
+
+ 
 }
 .recordList {
-  margin: 20px;
-  box-shadow: orchid palegoldenrod transparent;
-  border: 1px solid rgb(71, 166, 255);
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 5px rgb(71, 166, 255);
+  border: 1px solid;
+  margin-top: 5px;
+  border-radius: 5px;
+  background: #dbdef1;
+  box-shadow: 10px 10px 7px -3px rgba(0,0,0,0.33) inset;
+-webkit-box-shadow: 10px 10px 7px -3px rgba(0,0,0,0.33) inset;
+-moz-box-shadow: 10px 10px 7px -3px rgba(0,0,0,0.33) inset;
+}
+.order_list {
+  min-width: 500px;
+}
+.takContainer input{
+  min-width: 300px;
+  height:20px;
+}
+.takContainer button{
+ 
+  
+  height: 26px;
+  margin-left:5px;
 
 }

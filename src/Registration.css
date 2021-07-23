@@ -19,7 +19,7 @@
 }
 .registration_input > input {
   padding: 5px;
-  width: inherit;
+ 
 }
 
 .regButton {
@@ -32,7 +32,7 @@
   font-weight: lighter;
 }
 input {
-  min-width: 300px;
+  
 }
 .logLink {
   border: 1px solid;

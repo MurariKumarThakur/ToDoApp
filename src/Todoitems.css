@@ -1,3 +1,21 @@
 .checkbox {
   z-index: 0 !important;
 }
+.listContainer{
+  display:flex;
+  justify-content: space-between;
+ align-items: center;
+  
+}
+.action{
+  
+}
+.edit,.delete{
+  cursor:pointer;
+  margin-top: 7px;
+  border:1px solid;
+  margin-right: 5px;
+ }
+.checkbox{
+ 
+}

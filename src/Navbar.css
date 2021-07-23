@@ -2,8 +2,11 @@
   height: 50px;
   display:flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #1886b9;
   color:cornsilk;
   
+}
+.signOut{
+  margin-left:4px;
 }
