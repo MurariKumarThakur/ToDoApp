@@ -33,7 +33,7 @@ const Home = ({ user }) => {
     const docRef = db.collection("todos").doc(user?.uid);
     if (mytodos.length > 0) {
       docRef.set({
-        todos: [...mytodos, input],
+        todos: [input, ...mytodos],
       });
     } else {
       docRef.set({

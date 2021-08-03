@@ -53,11 +53,12 @@ export default function TransitionsModal({
       } else {
         record.push(rec);
       }
+    
     });
 
     docRef
       .update({
-        todos: record.concat(updateResult),
+        todos: updateResult.concat(record),
       })
       .then(() => {
         models(false);
