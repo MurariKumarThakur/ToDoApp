@@ -16,7 +16,10 @@ const NavBar = ({ user }) => {
           <i className='fas fa-list-ol' /> My Task Tracker
         </Link>
       </div>
+       <div className="timecomponent">
+          {""+new Date()}
 
+       </div>
       <div className='loginInfo'>
         {user ? (
           <>
